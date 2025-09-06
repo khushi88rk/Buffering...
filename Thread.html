@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threads - Assemble Here</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+               .header {
+            background-color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between; /* Separate logo, links, and profile icon */
+            align-items: center;
+            padding: 0 20px;
+            gap: 0; /* Remove extra gap between main nav items */
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 18px;
+            color: #333;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 100px; /* Keep large gap between links */
+            list-style: none;
+            justify-content: center; /* Center links horizontally */
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 700; /* Increased for bolder text */
+            font-size: 20px; /* Increased for larger text */
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #70C5CE;
+        }
+
+        .profile-icon {
+            width: 30px;
+            height: 30px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Post Requirement Section */
+        .post-section {
+            background-color: #D4F3F7;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 60px;
+            border: 1px solid rgba(112, 197, 206, 0.2);
+        }
+
+        .post-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .post-input {
+            width: 100%;
+            min-height: 120px;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background-color: white;
+            font-size: 14px;
+            font-family: inherit;
+            resize: vertical;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .post-input:focus {
+            outline: 2px solid #70C5CE;
+        }
+
+        .post-input::placeholder {
+            color: #999;
+        }
+
+        .ask-btn {
+            background-color: #FFB84D;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            float: right;
+            transition: all 0.3s;
+        }
+
+        .ask-btn:hover {
+            background-color: #e6a043;
+            transform: translateY(-1px);
+        }
+
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Recent Requirements Section */
+        .recent-section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        .requirement-card {
+            background-color: #D4F3F7;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(112, 197, 206, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .requirement-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .requirement-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .role-tag {
+            background-color: #FFB84D;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .event-info {
+            font-size: 16px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .team-name {
+            font-size: 18px;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .join-btn {
+            background-color: #FFB84D;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            float: right;
+            transition: all 0.3s;
+        }
+
+        .join-btn:hover {
+            background-color: #e6a043;
+            transform: translateY(-1px);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 60px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        .footer-bottom {
+            font-size: 12px;
+            color: #888;
+            margin-top: 40px;
+        }
+
+        .footer-bottom .heart {
+            color: #e74c3c;
+            font-size: 14px;
+        }
+
+        /* Success Message */
+        .success-message {
+            background-color: #27ae60;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .main-content {
+                padding: 40px 15px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .requirement-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .ask-btn,
+            .join-btn {
+                float: none;
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .post-section,
+            .requirement-card {
+                padding: 20px;
+            }
+
+            .role-tag {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+     <header class="header">
+        <nav class="nav-container">
+            <div class="logo">ASSEMBLE<br>HERE</div>
+            <ul class="nav-links">
+                <li><a href="#events">EVENTS</a></li>
+                <li><a href="People.html">PEOPLE</a></li>
+                <li><a href="Thread.html">THREADS</a></li>
+            </ul>
+            <div class="profile-icon">👤</div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Post Requirement Section -->
+        <section class="post-section">
+            <h2 class="post-title">Post Requirement</h2>
+            <div class="success-message" id="successMessage">
+                Your requirement has been posted successfully!
+            </div>
+            <textarea 
+                class="post-input" 
+                id="requirementInput"
+                placeholder="Describe the role you're looking for, required skills, event details, and any other relevant information...&#10;&#10;Example:&#10;Looking for a Frontend Developer for SIH hackathon&#10;Skills required: React, JavaScript, UI/UX&#10;Event: Smart India Hackathon 2025&#10;Team: Code Warriors"
+            ></textarea>
+            <div class="clearfix">
+                <button class="ask-btn" id="postBtn">Ask</button>
+            </div>
+        </section>
+
+        <!-- Recent Requirements Section -->
+        <section class="recent-section">
+            <h2 class="section-title">RECENT REQUIREMENT</h2>
+            
+            <!-- Requirement Card 1 -->
+            <div class="requirement-card">
+                <div class="requirement-header">
+                    <span class="role-tag">Designer</span>
+                    <span class="event-info">For SIH</span>
+                </div>
+                <div class="team-name">Team Buffering...</div>
+                <div class="clearfix">
+                    <button class="join-btn">Ask to Join</button>
+                </div>
+            </div>
+
+            <!-- Requirement Card 2 -->
+            <div class="requirement-card">
+                <div class="requirement-header">
+                    <span class="role-tag">Web Dev</span>
+                    <span class="event-info">For SIH</span>
+                </div>
+                <div class="team-name">Team 404</div>
+                <div class="clearfix">
+                    <button class="join-btn">Ask to Join</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">ASSEMBLE<br>HERE</div>
+            <div class="footer-bottom">
+                AssembleHere © 2025 | Built with <span class="heart">❤️</span> by Team Buffering
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Post requirement functionality
+        document.getElementById('postBtn').addEventListener('click', function() {
+            const input = document.getElementById('requirementInput');
+            const successMessage = document.getElementById('successMessage');
+            
+            if (input.value.trim() === '') {
+                alert('Please enter your requirement before posting.');
+                return;
+            }
+
+            // Show success message
+            successMessage.style.display = 'block';
+            
+            // Create new requirement card
+            const requirementText = input.value.trim();
+            const lines = requirementText.split('\n');
+            const firstLine = lines[0];
+            
+            // Extract role and event info from the first line (basic parsing)
+            let role = 'Team Member';
+            let event = 'Event';
+            
+            // Simple parsing logic
+            if (firstLine.toLowerCase().includes('designer')) role = 'Designer';
+            else if (firstLine.toLowerCase().includes('developer') || firstLine.toLowerCase().includes('dev')) role = 'Web Dev';
+            else if (firstLine.toLowerCase().includes('frontend')) role = 'Frontend Dev';
+            else if (firstLine.toLowerCase().includes('backend')) role = 'Backend Dev';
+            else if (firstLine.toLowerCase().includes('ai') || firstLine.toLowerCase().includes('ml')) role = 'AI/ML Engineer';
+            
+            if (firstLine.toLowerCase().includes('sih')) event = 'For SIH';
+            else if (firstLine.toLowerCase().includes('cyhi')) event = 'For CYHI';
+            else if (firstLine.toLowerCase().includes('hackathon')) event = 'For Hackathon';
+            
+            // Create new card
+            const newCard = document.createElement('div');
+            newCard.className = 'requirement-card';
+            newCard.style.opacity = '0';
+            newCard.style.transform = 'translateY(20px)';
+            
+            newCard.innerHTML = `
+                <div class="requirement-header">
+                    <span class="role-tag">${role}</span>
+                    <span class="event-info">${event}</span>
+                </div>
+                <div class="team-name">Your Team</div>
+                <div class="clearfix">
+                    <button class="join-btn">Ask to Join</button>
+                </div>
+            `;
+            
+            // Add to recent requirements
+            const recentSection = document.querySelector('.recent-section');
+            const firstCard = document.querySelector('.requirement-card');
+            if (firstCard) {
+                recentSection.insertBefore(newCard, firstCard);
+            } else {
+                recentSection.appendChild(newCard);
+            }
+            
+            // Animate in
+            setTimeout(() => {
+                newCard.style.transition = 'opacity 0.3s, transform 0.3s';
+                newCard.style.opacity = '1';
+                newCard.style.transform = 'translateY(0)';
+            }, 100);
+            
+            // Add event listener to new join button
+            newCard.querySelector('.join-btn').addEventListener('click', function() {
+                alert('Join request sent!');
+                this.textContent = 'Request Sent';
+                this.style.backgroundColor = '#27ae60';
+                this.disabled = true;
+            });
+            
+            // Clear input and hide success message after delay
+            input.value = '';
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+        });
+
+        // Add event listeners to existing join buttons
+        document.querySelectorAll('.join-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const teamName = this.parentElement.parentElement.querySelector('.team-name').textContent;
+                const role = this.parentElement.parentElement.querySelector('.role-tag').textContent;
+                
+                alert(`Join request sent to ${teamName} for ${role} position!`);
+                
+                // Change button state
+                this.textContent = 'Request Sent';
+                this.style.backgroundColor = '#27ae60';
+                this.disabled = true;
+            });
+        });
+
+        // Auto-resize textarea
+        document.getElementById('requirementInput').addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.max(120, this.scrollHeight) + 'px';
+        });
+
+        // Add entrance animation for existing cards
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.requirement-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.6s, transform 0.6s';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200 + 500);
+            });
+        });
+    </script>
+</body>
+</html>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>

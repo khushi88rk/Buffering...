@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People - Assemble Here</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background-color: #fff;
+            padding: 15px 0;
+            /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */ /* Removed shadow/line below navbar */
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            gap: 0;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 18px;
+            color: #333;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 100px;
+            list-style: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 700;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #70C5CE;
+        }
+
+        .profile-icon {
+            width: 30px;
+            height: 30px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #fff;
+            /* Add other hero styles here if needed */
+        }
+
+        /* People Grid */
+        .people-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .person-card {
+            background-color: rgba(112, 197, 206, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(112, 197, 206, 0.2);
+        }
+
+        .person-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .person-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .person-role {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .person-skills {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .availability {
+            margin-bottom: 8px;
+        }
+
+        .availability-label,
+        .event-label {
+            font-weight: 600;
+            color: #444;
+            font-size: 14px;
+        }
+
+        .availability-status {
+            color: #555;
+            font-size: 14px;
+        }
+
+        .availability-yes {
+            color: #27ae60;
+        }
+
+        .availability-no {
+            color: #e74c3c;
+        }
+
+        .event-info {
+            margin-bottom: 20px;
+        }
+
+        .event-name {
+            color: #555;
+            font-size: 14px;
+        }
+
+        .invite-btn {
+            background-color: #FFB84D;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .invite-btn:hover {
+            background-color: #e6a043;
+            transform: translateY(-1px);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 20px 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .footer-projects {
+            margin-bottom: 30px;
+        }
+
+        .project-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #70C5CE;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: #5ab3bc;
+        }
+
+        .project-emoji {
+            font-size: 16px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+        }
+
+        .footer-bottom .heart {
+            color: #e74c3c;
+            font-size: 14px;
+        }
+
+        .footer-copyright {
+            font-size: 12px;
+            color: #888;
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .people-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .main-content {
+                padding: 40px 15px;
+            }
+
+            .person-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .person-name {
+                font-size: 20px;
+            }
+
+            .main-content {
+                padding: 30px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">ASSEMBLE<br>HERE</div>
+            <ul class="nav-links">
+                <li><a href="index.html">EVENTS</a></li>
+                <li><a href="people.html" class="active">PEOPLE</a></li>
+                <li><a href="Thread.html">THREADS</a></li>
+            </ul>
+            <div class="profile-icon">👤</div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="people-grid">
+            <!-- Person Card 1 -->
+            <div class="person-card">
+                <h3 class="person-name">Priya Singh</h3>
+                <div class="person-role">Designer</div>
+                <div class="person-skills">Skills: UI/UX, Front End</div>
+                <div class="availability">
+                    <span class="availability-label">Availability:</span>
+                    <span class="availability-status availability-yes">Yes</span>
+                </div>
+                <div class="event-info">
+                    <span class="event-label">Event:</span>
+                    <span class="event-name">CYHI?</span>
+                </div>
+                <button class="invite-btn">Invite to team</button>
+            </div>
+
+            <!-- Person Card 2 -->
+            <div class="person-card">
+                <h3 class="person-name">Rohan Verma</h3>
+                <div class="person-role">Designer</div>
+                <div class="person-skills">Skills: UI/UX, DSA Python</div>
+                <div class="availability">
+                    <span class="availability-label">Availability:</span>
+                    <span class="availability-status availability-yes">Yes</span>
+                </div>
+                <div class="event-info">
+                    <span class="event-label">Event:</span>
+                    <span class="event-name">DT-Major Project</span>
+                </div>
+                <button class="invite-btn">Invite to team</button>
+            </div>
+
+            <!-- Person Card 3 -->
+            <div class="person-card">
+                <h3 class="person-name">Sherya Yadav</h3>
+                <div class="person-role">CS Engineer</div>
+                <div class="person-skills">Skills: HTML, Front End</div>
+                <div class="availability">
+                    <span class="availability-label">Availability:</span>
+                    <span class="availability-status availability-no">No</span>
+                </div>
+                <div class="event-info">
+                    <span class="event-label">Event:</span>
+                    <span class="event-name">SIH</span>
+                </div>
+                <button class="invite-btn">Invite to team</button>
+            </div>
+
+            <!-- Person Card 4 -->
+            <div class="person-card">
+                <h3 class="person-name">Arjun Patel</h3>
+                <div class="person-role">CS Engineer</div>
+                <div class="person-skills">Skills: C++, AI/ML</div>
+                <div class="availability">
+                    <span class="availability-label">Availability:</span>
+                    <span class="availability-status availability-no">NO</span>
+                </div>
+                <div class="event-info">
+                    <span class="event-label">Event:</span>
+                    <span class="event-name">2nd Year PR Project</span>
+                </div>
+                <button class="invite-btn">Invite to team</button>
+            </div>
+
+            <!-- Person Card 5 -->
+            <div class="person-card">
+                <h3 class="person-name">Amit Kumar</h3>
+                <div class="person-role">EC Engineer</div>
+                <div class="person-skills">Skills: HTML, JavaScript</div>
+                <div class="availability">
+                    <span class="availability-label">Availability:</span>
+                    <span class="availability-status availability-yes">Yes</span>
+                </div>
+                <div class="event-info">
+                    <span class="event-label">Event:</span>
+                    <span class="event-name">CYHI?</span>
+                </div>
+                <button class="invite-btn">Invite to team</button>
+            </div>
+
+            <!-- Person Card 6 -->
+            <div class="person-card">
+                <h3 class="person-name">Payal Sharma</h3>
+                <div class="person-role">SM Engineer</div>
+                <div class="person-skills">Skills: NA</div>
+                <div class="availability">
+                    <span class="availability-label">Availability:</span>
+                    <span class="availability-status availability-yes">Yes</span>
+                </div>
+                <div class="event-info">
+                    <span class="event-label">Event:</span>
+                    <span class="event-name">Onam Tug Of War</span>
+                </div>
+                <button class="invite-btn">Invite to team</button>
+            </div>
+
+            <!-- Person Card 7 -->
+            <div class="person-card">
+                <h3 class="person-name">Anjali Kapoor</h3>
+                <div class="person-role">Designer</div>
+                <div class="person-skills">Skills: UI/UX, Back End</div>
+                <div class="availability">
+                    <span class="availability-label">Availability:</span>
+                    <span class="availability-status availability-no">no</span>
+                </div>
+                <div class="event-info">
+                    <span class="event-label">Event:</span>
+                    <span class="event-name">DT-Major Project</span>
+                </div>
+                <button class="invite-btn">Invite to team</button>
+            </div>
+
+            <!-- Person Card 8 -->
+            <div class="person-card">
+                <h3 class="person-name">Alia Verma</h3>
+                <div class="person-role">EC Engineer</div>
+                <div class="person-skills">Skills: C++, HTML, CSS</div>
+                <div class="availability">
+                    <span class="availability-label">Availability:</span>
+                    <span class="availability-status availability-yes">Yes</span>
+                </div>
+                <div class="event-info">
+                    <span class="event-label">Event:</span>
+                    <span class="event-name">SIH</span>
+                </div>
+                <button class="invite-btn">Invite to team</button>
+            </div>
+
+            <!-- Person Card 9 -->
+            <div class="person-card">
+                <h3 class="person-name">Tarun Gupta</h3>
+                <div class="person-role">CS Engineer</div>
+                <div class="person-skills">Skills: C, DSA in C</div>
+                <div class="availability">
+                    <span class="availability-label">Availability:</span>
+                    <span class="availability-status availability-no">No</span>
+                </div>
+                <div class="event-info">
+                    <span class="event-label">Event:</span>
+                    <span class="event-name">SIH?</span>
+                </div>
+                <button class="invite-btn">Invite to team</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">ASSEMBLE<br>HERE</div>
+            <div class="footer-copyright">
+                © 2025 Assemble Here. All rights reserved to Buffering...
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add click handlers for invite buttons
+        document.querySelectorAll('.invite-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const personName = this.parentElement.querySelector('.person-name').textContent;
+                const eventName = this.parentElement.querySelector('.event-name').textContent;
+                alert(`Invitation sent to ${personName} for ${eventName}!`);
+                
+                // Optional: Change button text temporarily
+                const originalText = this.textContent;
+                this.textContent = 'Invited!';
+                this.style.backgroundColor = '#27ae60';
+                
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.style.backgroundColor = '#FFB84D';
+                }, 2000);
+            });
+        });
+
+        // Smooth scrolling for any anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add smooth scrolling for nav links
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                } else {
+                    window.location.href = href;
+                }
+            });
+        });
+
+        // Add some entrance animation
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.person-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.6s, transform 0.6s';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>

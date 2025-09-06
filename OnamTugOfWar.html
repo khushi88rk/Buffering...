@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details - Assemble Here</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+               .header {
+            background-color: #fff;
+            padding: 15px 0;
+            /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */ /* Removed shadow/line below navbar */
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            gap: 0;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 18px;
+            color: #333;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 100px;
+            list-style: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 700;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #70C5CE;
+        }
+
+        
+        .profile-icon {
+            width: 30px;
+            height: 30px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Event Header */
+        .event-header {
+            margin-bottom: 40px;
+        }
+
+        .event-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .event-date {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .event-location {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* Event Info */
+        .event-info {
+            margin-bottom: 40px;
+        }
+
+        .info-section {
+            margin-bottom: 25px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .info-content {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .info-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-list li {
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        /* Teams Section */
+        .teams-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .team-card {
+            background-color: rgba(112, 197, 206, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(112, 197, 206, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .team-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .team-label {
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .team-members {
+            margin-bottom: 20px;
+        }
+
+        .member-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .member-list li {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .join-team-btn {
+            background-color: #FFB84D;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .join-team-btn:hover {
+            background-color: #e6a043;
+            transform: translateY(-1px);
+        }
+
+        .join-team-btn.requested {
+            background-color: #27ae60;
+        }
+
+        /* Available Button */
+        .available-btn {
+            background-color: #FFB84D;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 184, 77, 0.3);
+        }
+
+        .available-btn:hover {
+            background-color: #e6a043;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 184, 77, 0.4);
+        }
+
+        .available-btn.active {
+            background-color: #27ae60;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        .footer-bottom {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .footer-bottom .heart {
+            color: #e74c3c;
+            font-size: 14px;
+        }
+
+        /* Modal */
+        .modal {
+            /* display: none; */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .modal h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .modal p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .modal-btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .modal-btn.confirm {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        .modal-btn.cancel {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+            margin-top: -10px;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        /* Success Message */
+        .success-message {
+            background-color: #27ae60;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .main-content {
+                padding: 30px 15px;
+            }
+
+            .event-title {
+                font-size: 28px;
+            }
+
+            .event-date,
+            .event-location {
+                font-size: 18px;
+            }
+
+            .teams-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                margin: 30% auto;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">ASSEMBLE<br>HERE</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">EVENTS</a></li>
+                <li><a href="people.html">PEOPLE</a></li>
+                <li><a href="threads.html">THREADS</a></li>
+            </ul>
+            <div class="profile-icon">👤</div>
+        </nav>
+    </header>
+
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Event Header -->
+        <section class="event-header" id="eventHeader">
+            <!-- Event details will be populated by JavaScript -->
+        </section>
+
+        <!-- Event Info -->
+        <section class="event-info" id="eventInfo">
+            <!-- Event information will be populated by JavaScript -->
+        </section>
+
+        <!-- Teams Section -->
+        <section class="teams-section">
+            <h2 class="section-title">Teams Available</h2>
+            <div class="teams-grid" id="teamsGrid">
+                <!-- Teams will be populated by JavaScript -->
+            </div>
+            <button class="available-btn" id="availableBtn">Available For This Event</button>
+        </section>
+    </main>
+
+    <!-- Join Team Modal -->
+    <div id="joinModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Join Team Request</h3>
+            <p id="modalMessage"></p>
+            <div class="modal-buttons">
+                <button class="modal-btn confirm" id="confirmJoin">Send Request</button>
+                <button class="modal-btn cancel" id="cancelJoin">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">ASSEMBLE<br>HERE</div>
+            <div class="footer-bottom">
+                AssembleHere © 2025 | Built with <span class="heart">❤️</span> by Team Buffering
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Event data
+        const eventData = {
+            'onam-tug-war': {
+                title: 'Onam Tug of War',
+                date: '7th September',
+                location: 'Football Ground',
+                teamMembers: '8-10 per team',
+                duration: '1-day event',
+                features: [
+                    'Fun & energetic traditional game.',
+                    'Encourages teamwork, strength & coordination.',
+                    'A chance to celebrate cultural festivity with sportsmanship.'
+                ],
+                prizes: [
+                    'Trophy for winning team.',
+                    'Medals & certificates for participants.'
+                ],
+                requirement: 'All girls and all boys team.',
+                teams: [
+                    {
+                        name: 'Byte Busters',
+                        members: ['Rohan (CSE)', 'Meera (IT)', 'Vikram (EE)']
+                    },
+                    {
+                        name: 'HackMasters',
+                        members: ['Rohan (CSE)', 'Meera (IT)', 'Vikram (EE)']
+                    }
+                ]
+            },
+            'ganpati-cultural': {
+                title: 'Ganpati Cultural Event',
+                date: '4th Sep',
+                location: 'OAT',
+                teamMembers: 'Individual or group (no restriction)',
+                duration: 'Evening cultural program (3-4 hours)',
+                features: [
+                    'Open platform to showcase talents: singing, dancing, poetry, drama, etc.',
+                    'Cultural bonding & festive spirit.',
+                    'Encourages creativity & performance skills.'
+                ],
+                prizes: [
+                    'Best performance awards (solo & group).',
+                    'Certificates of appreciation.',
+                    'Special audience-choice award.'
+                ],
+                requirement: 'Any of your choice.',
+                teams: [
+                    {
+                        name: 'Byte Busters',
+                        members: ['Rohan (CSE)', 'Meera (IT)', 'Vikram (EE)']
+                    },
+                    {
+                        name: 'HackMasters',
+                        members: ['Rohan (CSE)', 'Meera (IT)', 'Vikram (EE)']
+                    }
+                ]
+            },
+            'dt-major-project': {
+                title: 'DT - Major Project',
+                date: 'Sem Long',
+                location: 'Design Studio',
+                teamMembers: 'Group of 6',
+                duration: 'Entire semester (research + prototype + presentation)',
+                features: [
+                    'Based on Design Thinking methodology.',
+                    'Encourages innovation & deep problem-solving.',
+                    'Great addition to resume and project portfolio.'
+                ],
+                prizes: [
+                    'Best Project Award with certificate.',
+                    'Opportunities for incubation/startup support.',
+                    'Recognition in institute showcase events.'
+                ],
+                requirement: 'One Design and 2 Btech',
+                teams: [
+                    {
+                        name: 'Byte Busters',
+                        members: ['Rohan (CSE)', 'Meera (IT)', 'Vikram (EE)']
+                    },
+                    {
+                        name: 'HackMasters',
+                        members: ['Rohan (CSE)', 'Meera (IT)', 'Vikram (EE)']
+                    }
+                ]
+            },
+            '2nd-pr-project': {
+                title: '2nd PR Project',
+                date: '5th - 6th Sep',
+                location: 'LHTC, L- 104 & 105',
+                teamMembers: 'Varies by branch (generally 3-5 members)',
+                duration: 'Semester project',
+                features: [
+                    'Strengthens technical & practical knowledge.',
+                    'Opportunity to collaborate within branch.',
+                    'Helps in research, higher studies, and placements.'
+                ],
+                prizes: [
+                    'Best project award for each branch.',
+                    'Certificates for outstanding performers.',
+                    'Chances to present project in inter-college events.'
+                ],
+                requirement: 'Any of your choice.',
+                teams: [
+                    {
+                        name: 'Byte Busters',
+                        members: ['Rohan (CSE)', 'Meera (IT)', 'Vikram (EE)']
+                    },
+                    {
+                        name: 'HackMasters',
+                        members: ['Rohan (CSE)', 'Meera (IT)', 'Vikram (EE)']
+                    }
+                ]
+            },
+            'cyhi': {
+                title: 'CYHI? (Can You Hack It?)',
+                date: '5th - 6th Sep',
+                location: 'LHTC, L- 104 & 105',
+                teamMembers: '2-4 members per team',
+                duration: '24-hour hackathon',
+                features: [
+                    'Chance to solve real-world problems using coding & innovation.',
+                    'Learn teamwork, time management & fast prototyping.',
+                    'Networking with mentors and like-minded peers.'
+                ],
+                prizes: [
+                    'Cash prizes for top 3 teams.',
+                    'Special awards for Best Innovative Idea and Best Beginner Team.',
+                    'Certificates for all participants.'
+                ],
+                requirement: 'Any of your choice.',
+                teams: [
+                    {
+                        name: 'Buffering...',
+                        members: ['Khushi (Bdes)', 'Harshita (ECE)', 'Chhaya(ECE)']
+                    },
+                    {
+                        name: '404 Error!',
+                        members: ['Krishna (cse)', 'Aarti (Bdes)', 'Lucky(Mech)']
+                    }
+                ]
+            },
+            'sih': {
+                title: 'SIH (Smart India Hackathon - Internal Round)',
+                date: '14t - 15th Sep',
+                location: 'DSA',
+                teamMembers: '6 members (as per SIH guidelines)',
+                duration: '36-hour hackathon',
+                features: [
+                    'Official gateway to qualify for the National SIH round.',
+                    'Solve industry-level problem statements.',
+                    'Exposure to large-scale hackathon environment.'
+                ],
+                prizes: [
+                    'Winning teams get nominated for National SIH.',
+                    'Certificates of excellence & participation.',
+                    "Recognition in institute's newsletter/website"
+                ],
+                requirement: 'One girl required.',
+                teams: [
+                    {
+                        name: 'Maggie Mafia',
+                        members: ['Riya (SM)', 'Sam (CSE)', 'Neha (ECE)']
+                    },
+                    {
+                        name: 'Code Wizards',
+                        members: ['Tanvi (Design)', 'Arjun (CSE)', 'Priya (Mech)']
+                    }
+                ]
+            }
+        };
+
+        // Get event ID from URL parameter or default
+        const urlParams = new URLSearchParams(window.location.search);
+        const eventId = urlParams.get('event') || 'onam-tug-war';
+        const currentEvent = eventData[eventId];
+
+        // Populate event details
+        function populateEventDetails() {
+            if (!currentEvent) return;
+
+            // Event Header
+            document.getElementById('eventHeader').innerHTML = `
+                <h1 class="event-title">${currentEvent.title}</h1>
+                <div class="event-date">${currentEvent.date}</div>
+                <div class="event-location">${currentEvent.location}</div>
+            `;
+
+            // Event Info
+            document.getElementById('eventInfo').innerHTML = `
+                <div class="info-section">
+                    <div class="info-label">Team Members:</div>
+                    <div class="info-content">${currentEvent.teamMembers}</div>
+                </div>
+                <div class="info-section">
+                    <div class="info-label">Duration:</div>
+                    <div class="info-content">${currentEvent.duration}</div>
+                </div>
+                <div class="info-section">
+                    <div class="info-label">Features:</div>
+                    <ul class="info-list">
+                        ${currentEvent.features.map(feature => `<li>${feature}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="info-section">
+                    <div class="info-label">Prizes & Awards:</div>
+                    <ul class="info-list">
+                        ${currentEvent.prizes.map(prize => `<li>${prize}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="info-section">
+                    <div class="info-label">Team Requirement:</div>
+                    <div class="info-content">${currentEvent.requirement}</div>
+                </div>
+            `;
+
+            // Teams
+            document.getElementById('teamsGrid').innerHTML = currentEvent.teams.map(team => `
+                <div class="team-card">
+                    <div class="team-name">${team.name}</div>
+                    <div class="team-members">
+                        <div class="team-label">Team:</div>
+                        <ul class="member-list">
+                            ${team.members.map(member => `<li>${member}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <button class="join-team-btn" data-team="${team.name}">View Details</button>
+                </div>
+            `).join('');
+        }
+
+        // Initialize page
+        populateEventDetails();
+
+        // Modal functionality
+        const modal = document.getElementById('joinModal');
+        const closeBtn = document.querySelector('.close');
+        const confirmBtn = document.getElementById('confirmJoin');
+        const cancelBtn = document.getElementById('cancelJoin');
+        let selectedTeam = '';
+
+        // Join team buttons
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('join-team-btn') && e.target.textContent === 'View Details') {
+                selectedTeam = e.target.getAttribute('data-team');
+                document.getElementById('modalMessage').textContent = 
+                    `Do you want to send a join request to ${selectedTeam}?`;
+                modal.style.display = 'block';
+            }
+        });
+
+        // Close modal
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        cancelBtn.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Confirm join
+        confirmBtn.onclick = function() {
+            modal.style.display = 'none';
+            showSuccessMessage(`Join request sent to ${selectedTeam}!`);
+            
+            // Update button
+            const buttons = document.querySelectorAll(`[data-team="${selectedTeam}"]`);
+            buttons.forEach(btn => {
+                btn.textContent = 'Request Sent';
+                btn.classList.add('requested');
+                btn.disabled = true;
+            });
+        }
+
+        // Available button functionality
+        document.getElementById('availableBtn').addEventListener('click', function() {
+            if (this.textContent === 'Available For This Event') {
+                this.textContent = 'You are Available';
+                this.classList.add('active');
+                showSuccessMessage('You are now available for this event! Others can see you in the People section.');
+            } else {
+                this.textContent = 'Available For This Event';
+                this.classList.remove('active');
+                showSuccessMessage('You are no longer available for this event.');
+            }
+        });
+
+        // Success message function
+        function showSuccessMessage(message) {
+            const successMsg = document.getElementById('successMessage');
+            successMsg.textContent = message;
+            successMsg.style.display = 'block';
+            
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 4000);
+        }
+
+        // Add entrance animations
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.team-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.6s, transform 0.6s';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200 + 500);
+            });
+        });
+    </script>
+</body>
+</html>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
