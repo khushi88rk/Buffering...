@@ -6,17 +6,18 @@
     <title>Assemble Here</title>
     <link rel="stylesheet" href="index.css">  
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
         <nav class="nav-container">
             <div class="logo">ASSEMBLE<br>HERE</div>
             <ul class="nav-links">
-                <li><a href="#events">EVENTS</a></li>
+                <li><a href="Index.html">EVENTS</a></li>
                 <li><a href="People.html">PEOPLE</a></li>
                 <li><a href="Thread.html">THREADS</a></li>
             </ul>
-            <div class="profile-icon">👤</div>
+            <div class="profile-icon"><a href="Profile.html">👤</a></div>
         </nav>
     </header>
 
@@ -40,53 +41,61 @@
         <div class="events-container">
             <h2 class="events-title">EVENT LIST</h2>
             <div class="events-grid">
+
+                <!-- CYHI Event -->
                 <div class="event-card">
                     <h3 class="event-title">CYHI?</h3>
                     <div class="event-date">5th - 6th Sep</div>
-                    <div class="event-location">LHTC, L- 104 & 105</div>
+                    <div class="event-location">LHTC, L-104 & 105</div>
                     <p class="event-description">24 hr coding sprint to build innovative solutions.</p>
-                    <button class="view-details">View Details</button>
+                    <button class="view-details" data-url="CYHI.html">View Details</button>
                 </div>
 
+                <!-- SIH Event -->
                 <div class="event-card">
                     <h3 class="event-title">SIH</h3>
                     <div class="event-date">1st - 15th Sep</div>
                     <div class="event-location">DSA</div>
                     <p class="event-description">Presentation to qualify.</p>
-                    <button class="view-details">View Details</button>
+                    <button class="view-details" data-url="SHI.html">View Details</button>
                 </div>
 
+                <!-- Onam Tug Of War Event -->
                 <div class="event-card">
                     <h3 class="event-title">Onam Tug Of War</h3>
                     <div class="event-date">7th Sep</div>
                     <div class="event-location">Football Ground</div>
                     <p class="event-description">Encourage the spirit by participating in traditional game.</p>
-                    <button class="view-details"><a href="OnamTugOfWar.html">View Details</a></button>
+                    <button class="view-details" data-url="OnamTugOfWar.html">View Details</button>
                 </div>
 
+                <!-- Ganpati Cultural Event -->
                 <div class="event-card">
                     <h3 class="event-title">Ganpati Cultural Event</h3>
                     <div class="event-date">4th Sep</div>
                     <div class="event-location">OAT</div>
-                    <p class="event-description">Any performance is welcomed, singing, dancing, poems, act.</p>
-                    <button class="view-details">View Details</button>
+                    <p class="event-description">Any performance is welcomed: singing, dancing, poems, act.</p>
+                    <button class="view-details" data-url="GanpatiCultural.html">View Details</button>
                 </div>
 
+                <!-- DT Major Project -->
                 <div class="event-card">
-                    <h3 class="event-title">DT- Major Project</h3>
+                    <h3 class="event-title">DT - Major Project</h3>
                     <div class="event-date">Sem Long</div>
                     <div class="event-location">Design Studio</div>
-                    <p class="event-description">Design Thinking (elective) sem long project, team of 6.</p>
-                    <button class="view-details">View Details</button>
+                    <p class="event-description">Design Thinking (elective) semester-long project, team of 6.</p>
+                    <button class="view-details" data-url="DT.html">View Details</button>
                 </div>
 
+                <!-- 2nd PR Project -->
                 <div class="event-card">
                     <h3 class="event-title">2nd PR Project</h3>
                     <div class="event-date">Sem Long</div>
-                    <div class="event-location"></div>
-                    <p class="event-description">Branch wise project.</p>
-                    <button class="view-details">View Details</button>
+                    <div class="event-location">LHTC, L-104 & 105</div>
+                    <p class="event-description">Branch-wise project.</p>
+                    <button class="view-details" data-url="2ndYrPR.html">View Details</button>
                 </div>
+
             </div>
         </div>
     </section>
@@ -101,8 +110,9 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script>
-        // Smooth scrolling for navigation links is nice
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -116,11 +126,13 @@
             });
         });
 
-        // Add click handlers for view details buttons
+        // Handle View Details button click (single clean version)
         document.querySelectorAll('.view-details').forEach(button => {
             button.addEventListener('click', function() {
-                const eventTitle = this.parentElement.querySelector('.event-title').textContent;
-                alert(`View details for: ${eventTitle}`);
+                const url = this.getAttribute('data-url');
+                if (url) {
+                    window.location.href = url; // Redirect to event detail page
+                }
             });
         });
     </script>

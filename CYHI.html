@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYHI? (Can You Hack It?) - Assemble Here</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background-color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between; /* Separate logo, links, and profile icon */
+            align-items: center;
+            padding: 0 20px;
+            gap: 0; /* Remove extra gap between main nav items */
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 18px;
+            color: #333;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 100px; /* Keep large gap between links */
+            list-style: none;
+            justify-content: center; /* Center links horizontally */
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 700; /* Increased for bolder text */
+            font-size: 20px; /* Increased for larger text */
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #70C5CE;
+        }
+
+
+        .profile-icon {
+            width: 30px;
+            height: 30px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Event Header */
+        .event-header {
+            margin-bottom: 40px;
+        }
+
+        .event-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .event-date {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .event-location {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* Event Info */
+        .event-info {
+            margin-bottom: 40px;
+        }
+
+        .info-section {
+            margin-bottom: 25px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .info-content {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .info-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-list li {
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        /* Teams Section */
+        .teams-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .team-card {
+            background-color: rgba(112, 197, 206, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(112, 197, 206, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .team-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .team-label {
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .team-members {
+            margin-bottom: 20px;
+        }
+
+        .member-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .member-list li {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .join-team-btn {
+            background-color: #FFB84D;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .join-team-btn:hover {
+            background-color: #e6a043;
+            transform: translateY(-1px);
+        }
+
+        .join-team-btn.requested {
+            background-color: #27ae60;
+        }
+
+        /* Available Button */
+        .available-btn {
+            background-color: #FFB84D;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 184, 77, 0.3);
+        }
+
+        .available-btn:hover {
+            background-color: #e6a043;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 184, 77, 0.4);
+        }
+
+        .available-btn.active {
+            background-color: #27ae60;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        .footer-bottom {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .footer-bottom .heart {
+            color: #e74c3c;
+            font-size: 14px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .modal h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .modal p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .modal-btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .modal-btn.confirm {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        .modal-btn.cancel {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+            margin-top: -10px;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        /* Success Message */
+        .success-message {
+            background-color: #27ae60;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .main-content {
+                padding: 30px 15px;
+            }
+
+            .event-title {
+                font-size: 28px;
+            }
+
+            .event-date,
+            .event-location {
+                font-size: 18px;
+            }
+
+            .teams-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                margin: 30% auto;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">ASSEMBLE<br>HERE</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">EVENTS</a></li>
+                <li><a href="people.html">PEOPLE</a></li>
+                <li><a href="threads.html">THREADS</a></li>
+            </ul>
+          <div class="profile-icon"><a href="Profile.html">👤</a></div>
+        </nav>
+    </header>
+
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Event Header -->
+        <section class="event-header">
+            <h1 class="event-title">CYHI? (Can You Hack It?)</h1>
+            <div class="event-date">5th - 6th Sep</div>
+            <div class="event-location">LHTC, L- 104 & 105</div>
+        </section>
+
+        <!-- Event Info -->
+        <section class="event-info">
+            <div class="info-section">
+                <div class="info-label">Team Members:</div>
+                <div class="info-content">2-4 members per team</div>
+            </div>
+            <div class="info-section">
+                <div class="info-label">Duration:</div>
+                <div class="info-content">24-hour hackathon</div>
+            </div>
+            <div class="info-section">
+                <div class="info-label">Features:</div>
+                <ul class="info-list">
+                    <li>Chance to solve real-world problems using coding & innovation.</li>
+                    <li>Learn teamwork, time management & fast prototyping.</li>
+                    <li>Networking with mentors and like-minded peers.</li>
+                </ul>
+            </div>
+            <div class="info-section">
+                <div class="info-label">Prizes & Awards:</div>
+                <ul class="info-list">
+                    <li>Cash prizes for top 3 teams.</li>
+                    <li>Special awards for Best Innovative Idea and Best Beginner Team.</li>
+                    <li>Certificates for all participants.</li>
+                </ul>
+            </div>
+            <div class="info-section">
+                <div class="info-label">Team Requirement:</div>
+                <div class="info-content">Any of your choice.</div>
+            </div>
+        </section>
+
+        <!-- Teams Section -->
+        <section class="teams-section">
+            <h2 class="section-title">Teams Available</h2>
+            <div class="teams-grid">
+                <div class="team-card">
+                    <div class="team-name">Buffering...</div>
+                    <div class="team-members">
+                        <div class="team-label">Team:</div>
+                        <ul class="member-list">
+                            <li>Khushi (Bdes)</li>
+                            <li>Harshita (ECE)</li>
+                            <li>Chhaya(ECE)</li>
+                        </ul>
+                    </div>
+                    <button class="join-team-btn" data-team="Buffering...">View Details</button>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-name">404 Error!</div>
+                    <div class="team-members">
+                        <div class="team-label">Team:</div>
+                        <ul class="member-list">
+                            <li>Krishna (cse)</li>
+                            <li>Aarti (Bdes)</li>
+                            <li>Lucky(Mech)</li>
+                        </ul>
+                    </div>
+                    <button class="join-team-btn" data-team="404 Error!">View Details</button>
+                </div>
+            </div>
+            <button class="available-btn" id="availableBtn">Available For This Event</button>
+        </section>
+    </main>
+
+    <!-- Join Team Modal -->
+    <div id="joinModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Join Team Request</h3>
+            <p id="modalMessage"></p>
+            <div class="modal-buttons">
+                <button class="modal-btn confirm" id="confirmJoin">Send Request</button>
+                <button class="modal-btn cancel" id="cancelJoin">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">ASSEMBLE<br>HERE</div>
+            <div class="footer-bottom">
+                AssembleHere © 2025 | Built with <span class="heart">❤️</span> by Team Buffering
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('joinModal');
+        const closeBtn = document.querySelector('.close');
+        const confirmBtn = document.getElementById('confirmJoin');
+        const cancelBtn = document.getElementById('cancelJoin');
+        let selectedTeam = '';
+
+        // Join team buttons
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('join-team-btn') && e.target.textContent === 'View Details') {
+                selectedTeam = e.target.getAttribute('data-team');
+                document.getElementById('modalMessage').textContent = 
+                    `Do you want to send a join request to ${selectedTeam}?`;
+                modal.style.display = 'block';
+            }
+        });
+
+        // Close modal
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        cancelBtn.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Confirm join
+        confirmBtn.onclick = function() {
+            modal.style.display = 'none';
+            showSuccessMessage(`Join request sent to ${selectedTeam}!`);
+            
+            // Update button
+            const buttons = document.querySelectorAll(`[data-team="${selectedTeam}"]`);
+            buttons.forEach(btn => {
+                btn.textContent = 'Request Sent';
+                btn.classList.add('requested');
+                btn.disabled = true;
+            });
+        }
+
+        // Available button functionality
+        document.getElementById('availableBtn').addEventListener('click', function() {
+            if (this.textContent === 'Available For This Event') {
+                this.textContent = 'You are Available';
+                this.classList.add('active');
+                showSuccessMessage('You are now available for this event! Others can see you in the People section.');
+            } else {
+                this.textContent = 'Available For This Event';
+                this.classList.remove('active');
+                showSuccessMessage('You are no longer available for this event.');
+            }
+        });
+
+        // Success message function
+        function showSuccessMessage(message) {
+            const successMsg = document.getElementById('successMessage');
+            successMsg.textContent = message;
+            successMsg.style.display = 'block';
+            
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 4000);
+        }
+
+        // Add entrance animations
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.team-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.6s, transform 0.6s';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200 + 500);
+            });
+        });
+    </script>
+</body>
+</html>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>

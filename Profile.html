@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Assemble Here</title>
+    <link rel="stylesheet" href="Profile.css">
+</head>
+<body>
+    <!-- Header -->
+<header class="header">
+        <nav class="nav-container">
+            <div class="logo">ASSEMBLE<br>HERE</div>
+            <ul class="nav-links">
+                <li><a href="index.html">EVENTS</a></li>
+                <li><a href="people.html" class="active">PEOPLE</a></li>
+                <li><a href="Thread.html">THREADS</a></li>
+            </ul>
+           <div class="profile-icon"><a href="Profile.html">👤</a></div>
+        </nav>
+    </header>
+
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Profile Header -->
+        <section class="profile-header">
+            <div class="profile-name">Priya</div>
+            <div class="profile-role">Designer</div>
+        </section>
+
+        <!-- Available Events Section -->
+        <section class="available-events">
+            <h2 class="section-title">Events you are available for</h2>
+            
+            <div class="event-item">
+                <div class="event-name">CYHI?</div>
+                <label class="toggle-switch">
+                    <input type="checkbox" checked data-event="CYHI?">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="event-item">
+                <div class="event-name">SIH</div>
+                <label class="toggle-switch">
+                    <input type="checkbox" checked data-event="SIH">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section class="resume-section">
+            <h2 class="section-title">Add your resume/portfolio:</h2>
+            <div class="resume-upload" onclick="document.getElementById('resumeInput').click()">
+                <div class="resume-text" id="resumeText">Click to upload resume/portfolio</div>
+                <input type="file" id="resumeInput" class="resume-input" accept=".pdf,.doc,.docx">
+            </div>
+        </section>
+
+        <!-- Organize Event Section -->
+        <section class="organize-event">
+            <h2 class="section-title">Organize a event:</h2>
+            
+            <div class="event-card">
+                <div class="event-card-title">DT- Major Project</div>
+                <div class="event-card-date">Sem Long</div>
+                <div class="event-card-location">Design Studio</div>
+                <div class="event-card-description">Design Thinking (elective) sem long project, team of 6.</div>
+                <button class="manage-btn">Manage Event</button>
+                
+                <div class="add-event-btn" id="addEventBtn">+</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Create Event Modal -->
+    <div id="createEventModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Create New Event</h3>
+            
+            <form id="eventForm">
+                <div class="form-group">
+                    <label class="form-label">Event Name:</label>
+                    <input type="text" class="form-input" id="eventName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Date:</label>
+                    <input type="text" class="form-input" id="eventDate" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Location:</label>
+                    <input type="text" class="form-input" id="eventLocation" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Description:</label>
+                    <textarea class="form-textarea" id="eventDescription" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Team Size:</label>
+                    <input type="text" class="form-input" id="teamSize" required>
+                </div>
+            </form>
+            
+            <div class="modal-buttons">
+                <button class="modal-btn cancel" id="cancelBtn">Cancel</button>
+                <button class="modal-btn create" id="createBtn">Create Event</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">ASSEMBLE<br>HERE</div>
+            <div class="footer-bottom">
+                AssembleHere © 2025 | Built with <span class="heart">❤️</span> by Team Buffering
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('createEventModal');
+        const addEventBtn = document.getElementById('addEventBtn');
+        const closeBtn = document.querySelector('.close');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const createBtn = document.getElementById('createBtn');
+
+        // Open modal
+        addEventBtn.onclick = function() {
+            modal.style.display = 'block';
+        }
+
+        // Close modal
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        cancelBtn.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Create event
+        createBtn.onclick = function() {
+            const eventName = document.getElementById('eventName').value;
+            const eventDate = document.getElementById('eventDate').value;
+            const eventLocation = document.getElementById('eventLocation').value;
+            const eventDescription = document.getElementById('eventDescription').value;
+            const teamSize = document.getElementById('teamSize').value;
+
+            if (!eventName || !eventDate || !eventLocation || !eventDescription || !teamSize) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            // Create new event card (simplified for demo)
+            showSuccessMessage(`Event "${eventName}" created successfully!`);
+            modal.style.display = 'none';
+            
+            // Clear form
+            document.getElementById('eventForm').reset();
+        }
+
+        // Toggle switches
+        document.querySelectorAll('.toggle-switch input').forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                const eventName = this.getAttribute('data-event');
+                const isAvailable = this.checked;
+                
+                if (isAvailable) {
+                    showSuccessMessage(`You are now available for ${eventName}!`);
+                } else {
+                    showSuccessMessage(`You are no longer available for ${eventName}.`);
+                }
+            });
+        });
+
+        // Resume upload
+        document.getElementById('resumeInput').addEventListener('change', function() {
+            if (this.files && this.files[0]) {
+                const fileName = this.files[0].name;
+                document.getElementById('resumeText').textContent = `Uploaded: ${fileName}`;
+                showSuccessMessage('Resume/Portfolio uploaded successfully!');
+            }
+        });
+
+        // Success message function
+        function showSuccessMessage(message) {
+            const successMsg = document.getElementById('successMessage');
+            successMsg.textContent = message;
+            successMsg.style.display = 'block';
+            
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 4000);
+        }
+
+        // Add entrance animations
+        window.addEventListener('load', function() {
+            const sections = document.querySelectorAll('.profile-header, .available-events, .resume-section, .organize-event');
+            sections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    section.style.transition = 'opacity 0.6s, transform 0.6s';
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, index * 200 + 300);
+            });
+        });
+    </script>
+</body>
+</html>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
