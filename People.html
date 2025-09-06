@@ -2,14 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>People - Assemble Here</title>
     <style>
@@ -27,10 +19,10 @@
         }
 
         /* Header */
-          .header {
+            .header {
             background-color: white;
             padding: 15px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */ /* Removed line between navbar and page */
         }
 
         .nav-container {
@@ -68,7 +60,6 @@
 
         .nav-links a:hover {
             color: #70C5CE;
-        }
 
         .profile-icon {
             width: 30px;
@@ -79,7 +70,7 @@
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 14px;
+            font-size: 14px;}
         }
 
         /* Main Content */
@@ -87,12 +78,6 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 60px 20px;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: #fff;
-            /* Add other hero styles here if needed */
         }
 
         /* People Grid */
@@ -203,7 +188,6 @@
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 20px;
-            text-align: center;
         }
 
         .footer-projects {
@@ -240,14 +224,6 @@
         .footer-bottom .heart {
             color: #e74c3c;
             font-size: 14px;
-        }
-
-        .footer-copyright {
-            font-size: 12px;
-            color: #888;
-            border-top: 1px solid #444;
-            padding-top: 20px;
-            text-align: center;
         }
 
         /* Responsive Design */
@@ -287,8 +263,8 @@
         <nav class="nav-container">
             <div class="logo">ASSEMBLE<br>HERE</div>
             <ul class="nav-links">
-                <li><a href="index.html">EVENTS</a></li>
-                <li><a href="people.html" class="active">PEOPLE</a></li>
+                <li><a href="Index.html">EVENTS</a></li>
+                <li><a href="People.html">PEOPLE</a></li>
                 <li><a href="Thread.html">THREADS</a></li>
             </ul>
             <div class="profile-icon"><a href="Profile.html">👤</a></div>
@@ -303,8 +279,9 @@
                 <h3 class="person-name">Priya Singh</h3>
                 <div class="person-role">Designer</div>
                 <div class="person-skills">Skills: UI/UX, Front End</div>
-                
-                <a href="resumes/priya_resume.pdf" target="_blank" class="resume-link">View Resume</a>
+                <div class="action-buttons" style="margin-bottom: 10px;">
+                    <a href="https://dribbble.com/priyasingh" target="_blank" class="portfolio-btn">Portfolio</a>
+                </div>
                 <div class="availability">
                     <span class="availability-label">Availability:</span>
                     <span class="availability-status availability-yes">Yes</span>
@@ -313,7 +290,9 @@
                     <span class="event-label">Event:</span>
                     <span class="event-name">CYHI?</span>
                 </div>
-                <button class="invite-btn">Invite to team</button>
+                <div class="action-buttons">
+                    <button class="invite-btn">Invite to team</button>
+                </div>
             </div>
 
             <!-- Person Card 2 -->
@@ -321,8 +300,9 @@
                 <h3 class="person-name">Rohan Verma</h3>
                 <div class="person-role">Designer</div>
                 <div class="person-skills">Skills: UI/UX, DSA Python</div>
-                
-                <a href="resumes/rohan_resume.pdf" target="_blank" class="resume-link">View Resume</a> 
+                <div class="action-buttons" style="margin-bottom: 10px;">
+                    <a href="https://behance.net/rohanverma" target="_blank" class="portfolio-btn">Portfolio</a>
+                </div>
                 <div class="availability">
                     <span class="availability-label">Availability:</span>
                     <span class="availability-status availability-yes">Yes</span>
@@ -331,7 +311,9 @@
                     <span class="event-label">Event:</span>
                     <span class="event-name">DT-Major Project</span>
                 </div>
-                <button class="invite-btn">Invite to team</button>
+                <div class="action-buttons">
+                    <button class="invite-btn">Invite to team</button>
+                </div>
             </div>
 
             <!-- Person Card 3 -->
@@ -339,8 +321,9 @@
                 <h3 class="person-name">Sherya Yadav</h3>
                 <div class="person-role">CS Engineer</div>
                 <div class="person-skills">Skills: HTML, Front End</div>
-                 
-                <a href="resumes/Sherya.pdf" target="_blank" class="resume-link">View Resume</a>
+                <div class="action-buttons" style="margin-bottom: 10px;">
+                    <a href="https://linkedin.com/in/sheryayadav/resume" target="_blank" class="portfolio-btn">Resume</a>
+                </div>
                 <div class="availability">
                     <span class="availability-label">Availability:</span>
                     <span class="availability-status availability-no">No</span>
@@ -349,7 +332,9 @@
                     <span class="event-label">Event:</span>
                     <span class="event-name">SIH</span>
                 </div>
-                <button class="invite-btn">Invite to team</button>
+                <div class="action-buttons">
+                    <button class="invite-btn">Invite to team</button>
+                </div>
             </div>
 
             <!-- Person Card 4 -->
@@ -357,8 +342,9 @@
                 <h3 class="person-name">Arjun Patel</h3>
                 <div class="person-role">CS Engineer</div>
                 <div class="person-skills">Skills: C++, AI/ML</div>
-                 
-                <a href="resumes/arjun_resume.pdf" target="_blank" class="resume-link">View Resume</a>
+                <div class="action-buttons" style="margin-bottom: 10px;">
+                    <a href="https://github.com/arjunpatel/resume" target="_blank" class="portfolio-btn">Resume</a>
+                </div>
                 <div class="availability">
                     <span class="availability-label">Availability:</span>
                     <span class="availability-status availability-no">NO</span>
@@ -367,7 +353,9 @@
                     <span class="event-label">Event:</span>
                     <span class="event-name">2nd Year PR Project</span>
                 </div>
-                <button class="invite-btn">Invite to team</button>
+                <div class="action-buttons">
+                    <button class="invite-btn">Invite to team</button>
+                </div>
             </div>
 
             <!-- Person Card 5 -->
@@ -375,8 +363,9 @@
                 <h3 class="person-name">Amit Kumar</h3>
                 <div class="person-role">EC Engineer</div>
                 <div class="person-skills">Skills: HTML, JavaScript</div>
-                 
-                <a href="resumes/amit_resume.pdf" target="_blank" class="resume-link">View Resume</a>
+                <div class="action-buttons" style="margin-bottom: 10px;">
+                    <a href="https://docs.google.com/document/amitkumar-resume" target="_blank" class="portfolio-btn">Resume</a>
+                </div>
                 <div class="availability">
                     <span class="availability-label">Availability:</span>
                     <span class="availability-status availability-yes">Yes</span>
@@ -385,7 +374,9 @@
                     <span class="event-label">Event:</span>
                     <span class="event-name">CYHI?</span>
                 </div>
-                <button class="invite-btn">Invite to team</button>
+                <div class="action-buttons">
+                    <button class="invite-btn">Invite to team</button>
+                </div>
             </div>
 
             <!-- Person Card 6 -->
@@ -393,8 +384,9 @@
                 <h3 class="person-name">Payal Sharma</h3>
                 <div class="person-role">SM Engineer</div>
                 <div class="person-skills">Skills: NA</div>
-                 
-                <a href="resumes/payal_resume.pdf" target="_blank" class="resume-link">View Resume</a>
+                <div class="action-buttons" style="margin-bottom: 10px;">
+                    <a href="https://payalsharma-resume.pdf" target="_blank" class="portfolio-btn">Resume</a>
+                </div>
                 <div class="availability">
                     <span class="availability-label">Availability:</span>
                     <span class="availability-status availability-yes">Yes</span>
@@ -403,7 +395,9 @@
                     <span class="event-label">Event:</span>
                     <span class="event-name">Onam Tug Of War</span>
                 </div>
-                <button class="invite-btn">Invite to team</button>
+                <div class="action-buttons">
+                    <button class="invite-btn">Invite to team</button>
+                </div>
             </div>
 
             <!-- Person Card 7 -->
@@ -411,8 +405,9 @@
                 <h3 class="person-name">Anjali Kapoor</h3>
                 <div class="person-role">Designer</div>
                 <div class="person-skills">Skills: UI/UX, Back End</div>
-                 
-                <a href="resumes/anjali_resume.pdf" target="_blank" class="resume-link">View Resume</a>
+                <div class="action-buttons" style="margin-bottom: 10px;">
+                    <a href="https://anjalikapoor.design" target="_blank" class="portfolio-btn">Portfolio</a>
+                </div>
                 <div class="availability">
                     <span class="availability-label">Availability:</span>
                     <span class="availability-status availability-no">no</span>
@@ -421,7 +416,9 @@
                     <span class="event-label">Event:</span>
                     <span class="event-name">DT-Major Project</span>
                 </div>
-                <button class="invite-btn">Invite to team</button>
+                <div class="action-buttons">
+                    <button class="invite-btn">Invite to team</button>
+                </div>
             </div>
 
             <!-- Person Card 8 -->
@@ -429,8 +426,9 @@
                 <h3 class="person-name">Alia Verma</h3>
                 <div class="person-role">EC Engineer</div>
                 <div class="person-skills">Skills: C++, HTML, CSS</div>
-                 
-                <a href="resumes/alia_resume.pdf" target="_blank" class="resume-link">View Resume</a>
+                <div class="action-buttons" style="margin-bottom: 10px;">
+                    <a href="https://aliaverma-cv.com" target="_blank" class="portfolio-btn">Resume</a>
+                </div>
                 <div class="availability">
                     <span class="availability-label">Availability:</span>
                     <span class="availability-status availability-yes">Yes</span>
@@ -439,7 +437,9 @@
                     <span class="event-label">Event:</span>
                     <span class="event-name">SIH</span>
                 </div>
-                <button class="invite-btn">Invite to team</button>
+                <div class="action-buttons">
+                    <button class="invite-btn">Invite to team</button>
+                </div>
             </div>
 
             <!-- Person Card 9 -->
@@ -447,8 +447,9 @@
                 <h3 class="person-name">Tarun Gupta</h3>
                 <div class="person-role">CS Engineer</div>
                 <div class="person-skills">Skills: C, DSA in C</div>
-                 
-                <a href="resumes/tarun_resume.pdf" target="_blank" class="resume-link">View Resume</a>
+                <div class="action-buttons" style="margin-bottom: 10px;">
+                    <a href="https://tarungpta.github.io/resume" target="_blank" class="portfolio-btn">Resume</a>
+                </div>
                 <div class="availability">
                     <span class="availability-label">Availability:</span>
                     <span class="availability-status availability-no">No</span>
@@ -457,7 +458,9 @@
                     <span class="event-label">Event:</span>
                     <span class="event-name">SIH?</span>
                 </div>
-                <button class="invite-btn">Invite to team</button>
+                <div class="action-buttons">
+                    <button class="invite-btn">Invite to team</button>
+                </div>
             </div>
         </div>
     </main>
@@ -466,33 +469,37 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-logo">ASSEMBLE<br>HERE</div>
-            <div class="footer-copyright">
-                © 2025 Assemble Here. All rights reserved to Buffering...
+            <div class="footer-projects">
+                <a href="#" class="project-link">
+                    <span class="project-emoji">🚀</span>
+                    Project for CYHI Hackathon 2025
+                </a>
+                <a href="#" class="project-link">
+                    <span class="project-emoji">🔗</span>
+                    GitHub Repo
+                </a>
+            </div>
+            <div class="footer-bottom">
+                AssembleHere © 2025 | Built with <span class="heart">❤️</span> by Team Buffering
             </div>
         </div>
     </footer>
 
     <script>
-         // Required skills for ranking (can be dynamic per event)
-        const eventSkills = ["UI/UX", "Front End", "DSA", "Python", "C++"];
-
-        
-
         // Add click handlers for invite buttons
         document.querySelectorAll('.invite-btn').forEach(button => {
             button.addEventListener('click', function() {
-                const personName = this.parentElement.querySelector('.person-name').textContent;
-                const eventName = this.parentElement.querySelector('.event-name').textContent;
-                alert(Invitation sent to ${personName} for ${eventName}!);
-                
-                // Optional: Change button text temporarily
-                const originalText = this.textContent;
+                const personName = this.parentElement.parentElement.querySelector('.person-name').textContent;
+                const eventName = this.parentElement.parentElement.querySelector('.event-name').textContent;
                 this.textContent = 'Invited!';
                 this.style.backgroundColor = '#27ae60';
-                
+                this.style.boxShadow = '0 0 10px #27ae60';
+                this.disabled = true;
                 setTimeout(() => {
-                    this.textContent = originalText;
+                    this.textContent = 'Invite to team';
                     this.style.backgroundColor = '#FFB84D';
+                    this.style.boxShadow = '';
+                    this.disabled = false;
                 }, 2000);
             });
         });
@@ -507,22 +514,6 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
-                }
-            });
-        });
-
-        // Add smooth scrolling for nav links
-        document.querySelectorAll('.nav-links a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href.startsWith('#')) {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                } else {
-                    window.location.href = href;
                 }
             });
         });
@@ -542,17 +533,5 @@
             });
         });
     </script>
-</body>
-</html>, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
 </body>
 </html>
